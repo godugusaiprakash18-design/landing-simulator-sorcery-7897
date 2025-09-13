@@ -5,6 +5,7 @@ import Terminal from '@/components/Terminal';
 import EmailForm from '@/components/EmailForm';
 import FeatureCard from '@/components/FeatureCard';
 import { MessageSquare, Code, Play } from 'lucide-react';
+import arcadeBackground from '@/assets/arcade-background.jpg';
 
 const Index = () => {
   const [loaded, setLoaded] = useState(false);
@@ -19,8 +20,12 @@ const Index = () => {
   }, []);
 
   return (
-    <div className="min-h-screen flex flex-col overflow-hidden bg-arcade-dark">
-      <div className="flex-1 container mx-auto px-4 py-8 max-w-6xl">
+    <div 
+      className="min-h-screen flex flex-col overflow-hidden bg-arcade-dark bg-cover bg-center bg-no-repeat"
+      style={{ backgroundImage: `url(${arcadeBackground})` }}
+    >
+      <div className="absolute inset-0 bg-arcade-dark/80 z-0"></div>
+      <div className="flex-1 container mx-auto px-4 py-8 max-w-6xl relative z-10">
         <Header />
         
         <div className={`mt-16 mb-12 text-center transition-opacity duration-700 ${loaded ? 'opacity-100' : 'opacity-0'}`}>
@@ -60,7 +65,7 @@ const Index = () => {
         </div>
       </div>
       
-      <footer className="py-6 border-t border-gray-800 text-center text-sm text-gray-500">
+      <footer className="py-6 border-t border-gray-800 text-center text-sm text-gray-500 relative z-10">
         <p>© 2025 Engine Arcade. All rights reserved.</p>
       </footer>
     </div>
